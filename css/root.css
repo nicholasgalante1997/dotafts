@@ -1,0 +1,12 @@
+:root {
+    --spacing-unit: 1rem;
+    --font-size-unit: 1rem;
+
+    --pure-black: #000000;
+    --pure-white: #ffffff;
+    --amber: #ffbe0bff;
+    --orange-pantone: #fb5607ff;
+    --rose: #ff006eff;
+    --blue-violet: #8338ecff;
+    --azure: #3a86ffff;
+}
