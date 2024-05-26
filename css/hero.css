@@ -1,5 +1,0 @@
-p.hero-text {
-    font-size: clamp(2rem, 2.5vw, 5rem);
-    max-width: 1024px;
-}
-
