@@ -180,3 +180,7 @@ p {
   font-size: 1rem;
   margin-block: calc(0.25 * var(--spacing-unit));
 }
+
+.rick-and-morty-typestack {
+  font-family: Wubba, "Fira Sans Condensed", system-ui;
+}

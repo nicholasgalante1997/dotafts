@@ -1,5 +1,6 @@
 import { Option, OptionCache } from 'sleepydogs';
 import { marked } from 'marked';
+import eventRegistry from '../events/index.js';
 
 const OPTION_CACHE = new OptionCache();
 
@@ -12,10 +13,16 @@ class MarkdownClient {
   /**
    * @private
    */
+  #content;
+
+  /**
+   * @private
+   */
   #markup = null;
 
-  constructor(filepath) {
-    this.#filepath = filepath;
+  constructor(contentData) {
+    this.#filepath = contentData.content.filepath;
+    this.#content = contentData.content;
   }
 
   async loadMarkdown() {
@@ -53,9 +60,42 @@ class MarkdownClient {
   }
 
   mountToDOMTree() {
+
+    const img = document.querySelector("img.blog-image");
+    if (img instanceof HTMLImageElement) {
+      img.src = this.#content.metadata.image.src;
+      img.alt = this.#content.metadata.image.alt;
+      img.style.aspectRatio = this.#content.metadata.image.aspectRatio;
+    }
+
+    const title = document.querySelector('h1.blog-title');
+    if (title instanceof HTMLHeadingElement) {
+      title.innerText = this.#content.metadata.title;
+    }
+
+    const infoSpanShow = document.querySelector('span.blog-info-item.bii-show');
+    const infoSpanSeason = document.querySelector('span.blog-info-item.bii-season');
+    const infoSpanEp = document.querySelector('span.blog-info-item.bii-episode');
+
+    if (infoSpanShow) {
+      infoSpanShow.textContent = this.#content.metadata.source.show;
+      if (this.#content.ui?.styleOverrides?.blogInfo?.show) {
+        infoSpanShow.style = this.#content.ui.styleOverrides.blogInfo.show;
+      }
+    }
+
     if (this.#markup) {
         const latchpoint = document.getElementById('blog-content-lp');
         latchpoint.innerHTML = this.#markup;
+    }
+
+    const actions = this.#content.ui?.actions || [];
+    for (const action of actions) {
+      const el = document.querySelector(action.selector);
+      const handler = eventRegistry.get(action.handlerRef);
+      if (el && handler) {
+        el.addEventListener(action.event, handler);
+      }
     }
   }
 }

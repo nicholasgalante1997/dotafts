@@ -17,7 +17,7 @@ function getContentDataFromCId(blogId) {
 }
 
 function createMarkdownClient(contentData) {
-    return new MarkdownClient(contentData.content.filepath);
+    return new MarkdownClient(contentData);
 }
 
 function render(markdownClient) {
@@ -30,16 +30,14 @@ async function app() {
     const blogId = getBlogId();
     
     if (blogId === null) {
-        // redirect("/404.html");
+        redirect("/404.html");
         return;
     }
 
     const cData = getContentDataFromCId(blogId);
-
-    console.log(cData);
     
-    if (cData == null) { // if data is null redirect
-    //   redirect("/404.html");
+    if (cData == null) {
+      redirect("/404.html");
       return
     }
         
