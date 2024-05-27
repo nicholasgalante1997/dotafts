@@ -18,8 +18,8 @@ button {
     padding-left: var(--spacing-unit);
     padding-right: var(--spacing-unit);
 
-    --cta-main-bg-color: var(--amber);
-    --cta-main-bg-hover: var(--orange-pantone);
+    --cta-main-bg-color: var(--azure);
+    --cta-main-bg-hover: var(--rose);
 }
 
 button.cta-main {
@@ -43,15 +43,15 @@ button.cta-main.rounded {
 
 button.cta-secondary {
     background-color: transparent;
-    border: 2px solid var(--amber);
-    color: var(--amber);
+    border: 2px solid var(--cta-main-bg-color);
+    color: var(--cta-main-bg-color);
     transition: all 300ms;
 }
 
 button.cta-secondary:hover {
     background-color: transparent;
-    border: 2px solid var(--orange-pantone);
-    color: var(--orange-pantone);
+    border: 2px solid var(--cta-main-bg-hover);
+    color: var(--cta-main-bg-hover);
     transition: all 300ms;
 }
   

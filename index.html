@@ -18,11 +18,23 @@
     />
     <link rel="preload" as="style" href="/css/index.css" />
     <link rel="stylesheet" href="/css/index.css" type="text/css" />
+
+    <link rel="preload" crossorigin="anonymous" as="script" href="https://unpkg.com/web-vitals@4">,
+    <link rel="preload" crossorigin="anonymous" as="script" href="https://www.unpkg.com/sleepydogs@1.0.7">
+    <script type="importmap">
+      {
+        "imports": {
+          "web-vitals": "https://unpkg.com/web-vitals@4?module",
+          "sleepydogs": "https://www.unpkg.com/sleepydogs@1.0.7/dist/src/index.js"
+        }
+      }
+    </script>
+    <script src="/src/analytics/index.js" type="module"></script>
   </head>
   <body>
     <header>
       <a href="/" target="_self" class="fira-sans-condensed-semibold blog-header-item-main">
-        Afterthought.
+        .aftr
       </a>
       <a href="/blog" target="_self" class="fira-sans-condensed-regular blog-header-item ml-auto">
         Blog
@@ -67,8 +79,8 @@
         <span id="splash-content-phonemes">/kən'tɛnt/</span>
         <p>A new form of digital and pseudoneuroindulgent currency that you're all already grossly familiar with.</p>
         <div class="splash-text-cta-container">
-          <button id="browse-opinions" class="cta-main rounded">Browse Opinions</button>
-          <button class="cta-secondary rounded">Content Theory</button>
+          <button id="browse-opinions" class="cta-main">Browse Opinions</button>
+          <button class="cta-secondary">Content Theory</button>
         </div>
       </div>
       <div class="splash-image-container">
@@ -78,7 +90,6 @@
       </div>
     </main>
     <footer></footer>
-
     <script src="/src/pages/splash/index.js" type="module" defer></script>
   </body>
 </html>

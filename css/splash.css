@@ -32,6 +32,9 @@ div.splash-text-container {
     div.splash-text-cta-container {
         margin-left: calc(2 * var(--spacing-unit));
         margin-top: var(--spacing-unit);
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-unit);
     }
 }
 
@@ -57,6 +60,7 @@ div.splash-image-card {
     background-color: var(--pure-white);
     overflow: hidden;
     background-image: linear-gradient(to right, var(--rose), var(--azure));
+    padding: var(--spacing-unit);
 
     img {
         height: 100%;
@@ -65,5 +69,7 @@ div.splash-image-card {
         object-position: center;
         image-rendering: optimizeQuality;
         image-orientation: from-image;
+        border-radius: 2px;
+        aspect-ratio: 6 / 4;
     }
 }
