@@ -1,3 +1,3 @@
 export default function redirect(path) {
-    window.location.assign(path);
+  window.location.assign(path);
 }

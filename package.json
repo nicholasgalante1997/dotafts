@@ -1,10 +1,9 @@
 {
   "name": "afts.web",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "prettier": "prettier --write src",
+    "prettier": "prettier --write src minify.js",
     "lint": "eslint --ext js \"src/**\"",
     "lint:fix": "eslint --ext js --fix \"src/**\""
   },
@@ -15,8 +14,10 @@
   "devDependencies": {
     "@eslint/js": "^9.3.0",
     "eslint": "^9.3.0",
+    "glob": "^10.4.1",
     "globals": "^15.3.0",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "terser": "^5.31.0"
   },
   "dependencies": {
     "dompurify": "^3.1.4",

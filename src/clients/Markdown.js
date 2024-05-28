@@ -33,7 +33,7 @@ class MarkdownClient {
       const response = await fetch(this.#filepath, fetchOptions);
       const file = await response.text();
       const parsed = await marked.parse(file);
-      const sanitized = DOMPurify.sanitize(parsed, { USE_PROFILES: { html: true }});
+      const sanitized = DOMPurify.sanitize(parsed, { USE_PROFILES: { html: true } });
       return sanitized;
     };
 
@@ -60,8 +60,7 @@ class MarkdownClient {
   }
 
   mountToDOMTree() {
-
-    const img = document.querySelector("img.blog-image");
+    const img = document.querySelector('img.blog-image');
     if (img instanceof HTMLImageElement) {
       img.src = this.#content.metadata.image.src;
       img.alt = this.#content.metadata.image.alt;
@@ -85,8 +84,8 @@ class MarkdownClient {
     }
 
     if (this.#markup) {
-        const latchpoint = document.getElementById('blog-content-lp');
-        latchpoint.innerHTML = this.#markup;
+      const latchpoint = document.getElementById('blog-content-lp');
+      latchpoint.innerHTML = this.#markup;
     }
 
     const actions = this.#content.ui?.actions || [];
