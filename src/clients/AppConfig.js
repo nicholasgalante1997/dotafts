@@ -44,7 +44,9 @@ class AppConfig {
   findContentByKey(id) {
     if (this.#config) {
       const contentDirectory = this.#config?.content?.directory || [];
-      return contentDirectory.find(contentDirEnt => contentDirEnt.key.toLowerCase() === id.toLowerCase());
+      return contentDirectory.find(
+        (contentDirEnt) => contentDirEnt.key.toLowerCase() === id.toLowerCase()
+      );
     }
     return null;
   }

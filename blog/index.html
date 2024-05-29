@@ -3,11 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Afterthought.</title>
-
+    <title>.aftr</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
@@ -16,18 +14,13 @@
       href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    
     <link rel="preload" as="style" href="/css/index.css" />
     <link rel="stylesheet" href="/css/index.css" type="text/css" />
-
     <link rel="preload" as="style" href="/css/blog.css" />
     <link rel="stylesheet" href="/css/blog.css" type="text/css" />
-
     <link rel="preload" crossorigin="anonymous" as="script" href="https://unpkg.com/web-vitals@4">
     <link rel="preload" crossorigin="anonymous" as="script" href="https://www.unpkg.com/sleepydogs@1.0.7">
     <link rel="preload" crossorigin="anonymous" as="script" href="https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js">
-
-    <script src="/src/vendor/purify.min.js"></script>
 
     <script type="importmap">
       {
@@ -38,6 +31,8 @@
         }
       }
     </script>
+    <script src="/dist/vendor/purify.min.js"></script>
+    <script src="/dist/polyfills/dompurify.js" type="module"></script>
   </head>
   <body>
     <header>
@@ -96,6 +91,6 @@
       <div id="blog-content-lp" class="blog-content"></div>
     </main>
     <footer></footer>
-    <script src="/src/pages/blog/index.js" type="module"></script>
+    <script src="/dist/pages/blog/index.js" type="module"></script>
   </body>
 </html>

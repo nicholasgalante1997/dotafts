@@ -1,4 +1,4 @@
-import rmBioMoreInfoOnClick from "./rmBioMoreInfoOnClick";
+import rmBioMoreInfoOnClick from './rmBioMoreInfoOnClick.js';
 
 const eventRegistry = new Map();
 

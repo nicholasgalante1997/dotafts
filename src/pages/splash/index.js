@@ -9,11 +9,7 @@
  */
 
 import setupActions from './actions.js';
-import initSplashImgSequence from './initSplashImgSequence.js';
-import prefersReducedMotion from '../../lib/prefersReducedMotion.js';
+// import initSplashImgSequence from './initSplashImgSequence.js';
+// import prefersReducedMotion from '../../lib/prefersReducedMotion.js';
 
 setupActions();
-
-if (!prefersReducedMotion()) {
-  // initSplashImgSequence();
-}

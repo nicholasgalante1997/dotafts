@@ -12,38 +12,38 @@ function getBlogId() {
 }
 
 function getContentDataFromCId(blogId) {
-    if (blogId === null) return null;
-    return appConfig.findContentByKey(blogId);
+  if (blogId === null) return null;
+  return appConfig.findContentByKey(blogId);
 }
 
 function createMarkdownClient(contentData) {
-    return new MarkdownClient(contentData);
+  return new MarkdownClient(contentData);
 }
 
 function render(markdownClient) {
-    markdownClient.mountToDOMTree();
+  markdownClient.mountToDOMTree();
 }
 
 async function app() {
-    await loadAppConfig();
-    
-    const blogId = getBlogId();
-    
-    if (blogId === null) {
-        redirect("/404.html");
-        return;
-    }
+  await loadAppConfig();
 
-    const cData = getContentDataFromCId(blogId);
-    
-    if (cData == null) {
-      redirect("/404.html");
-      return
-    }
-        
-    const markdownClient = createMarkdownClient(cData);
-    await markdownClient.loadMarkdown();
-    render(markdownClient);
+  const blogId = getBlogId();
+
+  if (blogId === null) {
+    redirect('/404.html');
+    return;
+  }
+
+  const cData = getContentDataFromCId(blogId);
+
+  if (cData == null) {
+    redirect('/404.html');
+    return;
+  }
+
+  const markdownClient = createMarkdownClient(cData);
+  await markdownClient.loadMarkdown();
+  render(markdownClient);
 }
 
 await app();
