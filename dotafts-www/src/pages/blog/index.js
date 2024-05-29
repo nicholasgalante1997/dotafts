@@ -1,3 +1,15 @@
+/**
+ * @xng
+ *
+ * Scripting Entrypoint for Blog ("/blog/:id") Page Route
+ */
+
+/**
+ * Put all client side JS that needs to run on the Splash Page here
+ */
+
+import { Log } from 'sleepydogs';
+
 import appConfig from '../../clients/AppConfig.js';
 import MarkdownClient from '../../clients/Markdown.js';
 import QueryParamParser from '../../clients/Query.js';
@@ -46,4 +58,5 @@ async function app() {
   render(markdownClient);
 }
 
+Log.factory({ level: 'info', service: 'x-dotafts-blog-ui', version: '1.0' }).info('App Started.');
 await app();

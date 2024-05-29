@@ -7,9 +7,8 @@
 /**
  * Put all client side JS that needs to run on the Splash Page here
  */
-
+import { Log } from 'sleepydogs';
 import setupActions from './actions.js';
-// import initSplashImgSequence from './initSplashImgSequence.js';
-// import prefersReducedMotion from '../../lib/prefersReducedMotion.js';
 
+Log.factory({ level: 'info', service: 'x-dotafts-splash-ui', version: '1.0' }).info('App Started.');
 setupActions();

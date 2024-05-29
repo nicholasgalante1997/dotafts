@@ -15,11 +15,11 @@ async fn main() -> std::io::Result<()> {
             .route("/x/app/info", web::get().to(service_info))
             .service(
                 fs::Files::new("/", "./dotafts-www")
-                .show_files_listing()
-                .use_last_modified(true)
-                .use_etag(true)
-                .prefer_utf8(true)
-                .index_file("./dotafts-www/index.html")
+                  .show_files_listing()
+                  .use_last_modified(true)
+                  .use_etag(true)
+                  .prefer_utf8(true)
+                  .index_file("./dotafts-www/index.html")
             )
     })
     .bind(("127.0.0.1", 8080))?
