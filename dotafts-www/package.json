@@ -6,7 +6,9 @@
     "prettier": "prettier --write src minify.js",
     "lint": "eslint --ext js \"src/**\"",
     "lint:fix": "eslint --ext js --fix \"src/**\"",
-    "minify": "node minify.js"
+    "copy:vendor": "node copyVendor.js",
+    "minify": "node minify.js",
+    "package": "run-s minify copy:*"
   },
   "keywords": [],
   "author": "",
@@ -17,11 +19,14 @@
     "eslint": "^9.3.0",
     "glob": "^10.4.1",
     "globals": "^15.3.0",
+    "ncp": "^2.0.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "terser": "^5.31.0"
   },
   "dependencies": {
     "dompurify": "^3.1.4",
+    "lottie-web": "^5.12.2",
     "marked": "^12.0.2",
     "sleepydogs": "^1.0.7",
     "web-vitals": "^4.0.1"

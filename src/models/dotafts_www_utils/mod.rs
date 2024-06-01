@@ -1,4 +1,5 @@
 pub mod assets;
+pub mod dependency_map;
 pub mod errors;
 pub mod htm_builder;
 pub mod htm_injectors;

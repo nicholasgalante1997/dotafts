@@ -17,12 +17,12 @@ const daml = Log.factory({
 
 /**
  * Asynchronously writes the param `code` to the provided `minPath`
- * @param {string} minPath 
- * @param {string} code 
+ * @param {string} minPath
+ * @param {string} code
  */
 async function writeMinJsFile(minPath, code) {
   const writeAttempt = new Attempt({
-    callback: async () => await writeFile(minPath, code, { encoding: "utf8" }),
+    callback: async () => await writeFile(minPath, code, { encoding: 'utf8' }),
     onError: exitOnError,
     retries: 5
   });
@@ -31,7 +31,7 @@ async function writeMinJsFile(minPath, code) {
 
 /**
  * Creates a file's root (immediate parent) directory using the provided sourcePath.
- * @param {string} sourcePath 
+ * @param {string} sourcePath
  */
 async function createParentDirectory(sourcePath) {
   const delimiter = getOS() === 'win32' ? '\\' : '/';
@@ -42,15 +42,15 @@ async function createParentDirectory(sourcePath) {
 /**
  * Creates a minPath from a sourcePath
  * @param {string} sourcePath
- * @param {boolean} sourceMap 
+ * @param {boolean} sourceMap
  */
 function getMinPath(sourcePath, sourceMap = false) {
   const delimiter = getOS() === 'win32' ? '\\' : '/';
   const splitPath = sourcePath.split(delimiter);
-  const srcIndex = splitPath.indexOf("src");
+  const srcIndex = splitPath.indexOf('src');
 
   if (srcIndex === -1) {
-    daml.error("FileNotSrcException");
+    daml.error('FileNotSrcException');
     daml.error(path);
     exitOnError();
   }
@@ -77,7 +77,7 @@ function getOS() {
  */
 async function getAllJsFilePaths() {
   const globOption = new Option(
-    async () => await glob('src/**/*.js', { ignore: /node_modules|([\d\w])*\.min\.js/g }),
+    async () => await glob('src/**/*.js', { ignore: ['node_modules', 'src/vendor/*'] }),
     { retries: 5 }
   );
   const { data, error } = await globOption.resolve();
@@ -136,13 +136,11 @@ function getPreamble(source) {
     hour12: false,
     timeZone: 'America/Denver'
   };
-  return (
-    `/* ********************************************************************************
+  return `/* ********************************************************************************
   * source-path: "${source}" 
   * source-map: "${getMinPath(source, true)}"
   * generated on "${new Intl.DateTimeFormat('en-US', intlOptions).format(new Date())}"
-  ******************************************************************************** */\n`
-  );
+  ******************************************************************************** */\n`;
 }
 
 function exitOnError(e = null) {
@@ -194,7 +192,7 @@ async function build() {
   }
 
   timer.stop();
-  daml.log('Done.')
+  daml.log('Done.');
   daml.log(`Run took ${timer.elapsed()}ms`);
 }
 

@@ -48,6 +48,19 @@ header {
         -webkit-text-fill-color: transparent;
     }
 
+    a#da-header-lottie-animation-container {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        justify-self: flex-start;
+        align-items: center;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+    }
+
     a.blog-header-item {
         font-size: 16px;
         line-height: 1.15;

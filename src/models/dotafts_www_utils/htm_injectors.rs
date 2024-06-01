@@ -1,75 +1,118 @@
+use std::{error::Error, fs::File, io::Read, path::Path};
+
+use crate::models::view::RegisteredView;
+use crate::util::strings;
+
 use super::injector_trait::MarkupInjector;
 
 pub struct HTMLTemplateTitleTagInjector;
 
 impl MarkupInjector for HTMLTemplateTitleTagInjector {
-    fn inject(&self, markup: &mut String, injected: &str) -> () {
+    fn inject(markup: &mut String, injected: &str) -> () {
         let tag = "<!-- @xda-title -->";
-        // https://users.rust-lang.org/t/modify-string-in-place/51305
-        let markup_memv = std::mem::take(markup);
-        *markup = markup_memv.replace(tag, injected);
+        strings::swap_in_place(markup, tag, injected);
     }
 }
 
 pub struct HTMLTemplateMetaTagInjector;
 
 impl MarkupInjector for HTMLTemplateMetaTagInjector {
-    fn inject(&self, markup: &mut String, injected: &str) -> () {
+    fn inject(markup: &mut String, injected: &str) -> () {
         let tag = "<!-- @xda-description -->";
-        let markup_memv = std::mem::take(markup);
-        *markup = markup_memv.replace(tag, injected);
+        strings::swap_in_place(markup, tag, injected);
     }
 }
 
 pub struct HTMLTemplateSEOInjector;
 
 impl MarkupInjector for HTMLTemplateSEOInjector {
-    fn inject(&self, markup: &mut String, injected: &str) -> () {
+    fn inject(markup: &mut String, injected: &str) -> () {
         let tag = "<!-- @xda-google-seo -->";
-        let markup_memv = std::mem::take(markup);
-        *markup = markup_memv.replace(tag, injected);
+        strings::swap_in_place(markup, tag, injected);
     }
 }
 
 pub struct HTMLTemplateCSSInjector;
 
 impl MarkupInjector for HTMLTemplateCSSInjector {
-    fn inject(&self, markup: &mut String, injected: &str) -> () {
+    fn inject(markup: &mut String, injected: &str) -> () {
         let tag = "<!-- @xda-css -->";
-        let markup_memv = std::mem::take(markup);
-        *markup = markup_memv.replace(tag, injected);
+        strings::swap_in_place(markup, tag, injected);
     }
 }
 
 pub struct HTMLTemplatePreloadScriptsInjector;
 
 impl MarkupInjector for HTMLTemplatePreloadScriptsInjector {
-    fn inject(&self, markup: &mut String, injected: &str) -> () {
+    fn inject(markup: &mut String, injected: &str) -> () {
         let tag = "<!-- @xda-preloaded-scripts -->";
-        let markup_memv = std::mem::take(markup);
-        *markup = markup_memv.replace(tag, injected);
+        strings::swap_in_place(markup, tag, injected);
     }
 }
 
 pub struct HTMLTemplateImportMapsScriptInjector;
 
 impl MarkupInjector for HTMLTemplateImportMapsScriptInjector {
-    fn inject(&self, markup: &mut String, injected: &str) -> () {
+    fn inject(markup: &mut String, injected: &str) -> () {
         let tag = "<!-- @xda-es6-import-map -->";
-        let markup_memv = std::mem::take(markup);
-        *markup = markup_memv.replace(tag, injected);
+        strings::swap_in_place(markup, tag, injected);
     }
 }
 
 pub struct HTMLTemplateJSAnalyticsScriptInjector;
 
 impl MarkupInjector for HTMLTemplateJSAnalyticsScriptInjector {
-    fn inject(&self, markup: &mut String, injected: &str) -> () {
+    fn inject(markup: &mut String, injected: &str) -> () {
         let tag = "<!-- @xda-analytics -->";
-        let markup_memv = std::mem::take(markup);
-        *markup = markup_memv.replace(tag, injected);
+        strings::swap_in_place(markup, tag, injected);
     }
 }
 
 pub struct HTMLTemplateContentInjectorPlus;
+
+impl HTMLTemplateContentInjectorPlus {
+    pub fn render_page_to_markup(markup: &mut String, page: RegisteredView) -> Result<(), Box<dyn Error>> {
+        match page {
+            RegisteredView::Splash => {
+                Self::render_splash_page_to_markup(markup)?;
+            },
+            _ => {}
+        };
+
+        Ok(())
+    }
+
+    pub fn add_header_to_markup(markup: &mut String) -> Result<(), Box<dyn Error>> {
+        let header_tag_ph = "<!-- @xda-ui-header -->";
+        let header_html_string = Self::get_html_chunk("dotafts-www/markup/Header.html")?;
+        strings::swap_in_place(markup, &header_tag_ph, &header_html_string);
+        Ok(())
+    }
+
+    pub fn add_footer_to_markup(markup: &mut String) -> Result<(), Box<dyn Error>> {
+        let footer_tag_ph = "<!-- @xda-ui-footer -->";
+        let footer_html_string = Self::get_html_chunk("dotafts-www/markup/Footer.html")?;
+        strings::swap_in_place(markup, &footer_tag_ph, &footer_html_string);
+        Ok(())
+    }
+
+    pub fn render_splash_page_to_markup(markup: &mut String) -> Result<(), Box<dyn Error>> {
+        HTMLTemplateContentInjectorPlus::add_header_to_markup(markup)?;
+        HTMLTemplateContentInjectorPlus::add_footer_to_markup(markup)?;
+
+        let content_tag_ph = "<!-- @xda-ui-content -->";
+        let splash_page_html_string = Self::get_html_chunk("dotafts-www/markup/SplashPage.html")?;
+        strings::swap_in_place(markup, &content_tag_ph, &splash_page_html_string);
+
+        Ok(())
+    }
+
+    pub fn get_html_chunk(html_chunk_path: &str) -> Result<String, Box<dyn Error>> {
+        let mut html_chunk_file = File::open(Path::new(html_chunk_path))?;
+        let mut html_chunk_string = String::new();
+        html_chunk_file.read_to_string(&mut html_chunk_string)?;
+        Ok(html_chunk_string)
+    }
+
+}
 pub struct HTMLTemplateJSAppScriptInjector;
