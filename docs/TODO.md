@@ -24,3 +24,15 @@
    6. Set up static index route (/, /index, /index.html)
    7. Set up static blog route (/blog/browse, /blog/browse.html)
    8. Set up dynamic blog route (/blogs/:id)
+
+---
+
+Notes 6/1 On Rust Migration.
+
+Love rust. Love it so much every time.  
+
+Todos
+
+- Client Side JS Bundles are missing from the on-the-fly created markup in the html server handlers
+- SEO Missing
+- Analytics Missing

@@ -17,19 +17,8 @@ pub async fn get_app_config_json() -> actix_web::Result<NamedFile> {
 }
 
 pub async fn get_splash_page() -> Result<HttpResponse, Error> {
-
-    info!("Received req for path '/'");
-    warn!("Attempting to build html file...");
-
     let mut html_builder = HTMLBuilder::new()?;
-
-    info!("Created html builder struct");
-
     let html = html_builder.build_static_page(RegisteredView::Splash)?;
-
-    info!("Created html from splash page template.");
-    info!("{html}");
-
     Ok(
         HttpResponse::Ok()
         .content_type(ContentType::html())

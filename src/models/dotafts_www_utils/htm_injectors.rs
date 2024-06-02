@@ -116,3 +116,25 @@ impl HTMLTemplateContentInjectorPlus {
 
 }
 pub struct HTMLTemplateJSAppScriptInjector;
+
+impl HTMLTemplateJSAppScriptInjector {
+    pub fn get_scripts_for_page_as_string(page: RegisteredView) -> String {
+        match page {
+            RegisteredView::Splash => {
+                String::from(
+                    r#"
+                      <script src="/dist/pages/splash/index.js" type="module"></script>
+                    "#
+                )
+            }
+            _ => String::new()
+        }
+    }
+}
+
+impl MarkupInjector for HTMLTemplateJSAppScriptInjector {
+    fn inject(markup: &mut String, injected: &str) -> () {
+        let tag = "<!-- @xda-app-scripts -->";
+        strings::swap_in_place(markup, tag, injected);
+    }
+}

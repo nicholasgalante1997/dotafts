@@ -14,8 +14,8 @@ async fn main() -> std::io::Result<()> {
     env_logger::init_from_env(Env::default().default_filter_or("info"));
     HttpServer::new(|| {
         App::new()
-            // .wrap(Logger::default())
-            .wrap(middleware::DefaultHeaders::new().add(("X-DA-API-Version", "0.1")))
+            .wrap(Logger::default())
+            .wrap(middleware::DefaultHeaders::new().add(("X-Dotafts-Server-API-Version", "0.1")))
             // .wrap(middleware::Compress::default())
             .route("/x/api/info", web::get().to(AppRoutes::get_service_info))
             .route("/x/app/data/app.json", web::get().to(AppRoutes::get_app_config_json))

@@ -76,10 +76,7 @@ pub mod js_dependency {
         pub fn get_import_map_for_dependencies(&self, dependencies: Vec<&str>) -> Option<String> {
             let mut import_map_as_string = String::new();
             
-            import_map_as_string.push_str(r#"
-              <script type="importmap">
-                {"imports":{
-            "#);
+            import_map_as_string.push_str(r#"<script type="importmap">{"imports":{"#);
 
             for dep in dependencies {
                 let (dep_name, _dep_preload_url, dep_esm_url) = self.registered_dependencies.get(dep)?;
@@ -87,7 +84,7 @@ pub mod js_dependency {
             };
 
             import_map_as_string.pop()?;
-            import_map_as_string.push_str("}}\n");
+            import_map_as_string.push_str("}}");
             import_map_as_string.push_str("</script>");
 
             Some(import_map_as_string)

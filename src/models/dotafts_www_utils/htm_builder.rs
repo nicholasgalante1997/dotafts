@@ -66,6 +66,11 @@ impl HTMLBuilder {
         );
 
         HTMLTemplateContentInjectorPlus::render_page_to_markup(&mut self.template, RegisteredView::Splash)?;
+
+        HTMLTemplateJSAppScriptInjector::inject(
+            &mut self.template, 
+            &HTMLTemplateJSAppScriptInjector::get_scripts_for_page_as_string(RegisteredView::Splash)
+        );
     
         Ok(self.template.clone())
     }
