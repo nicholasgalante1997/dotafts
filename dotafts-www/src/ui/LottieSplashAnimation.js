@@ -10,5 +10,5 @@ export default function runSplashAnimation() {
     rendererSettings: {
       className: 'splash-animation-lottie-vector'
     }
-  })
+  });
 }

@@ -1,7 +1,6 @@
 use actix_files::NamedFile;
+use actix_web::http::header::{CacheControl, CacheDirective};
 use actix_web::{http::header::ContentType,Error,HttpResponse,Responder};
-
-use log::{info, trace, warn};
 
 use crate::config::api::info::ServiceInfo;
 use crate::config::dotaftswww_config::{self as DotaftsWWWConfig};
@@ -23,6 +22,7 @@ pub async fn get_splash_page() -> Result<HttpResponse, Error> {
         HttpResponse::Ok()
         .content_type(ContentType::html())
         .insert_header(("X-DA-Static-Asset-Version", "0.1"))
+        .insert_header(CacheControl(vec![CacheDirective::NoCache]))
         .body(html)
     )
 }

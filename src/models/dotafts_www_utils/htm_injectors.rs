@@ -84,14 +84,14 @@ impl HTMLTemplateContentInjectorPlus {
 
     pub fn add_header_to_markup(markup: &mut String) -> Result<(), Box<dyn Error>> {
         let header_tag_ph = "<!-- @xda-ui-header -->";
-        let header_html_string = Self::get_html_chunk("dotafts-www/markup/Header.html")?;
+        let header_html_string = Self::get_html_chunk("dotafts-www/public/htm/Header.html")?;
         strings::swap_in_place(markup, &header_tag_ph, &header_html_string);
         Ok(())
     }
 
     pub fn add_footer_to_markup(markup: &mut String) -> Result<(), Box<dyn Error>> {
         let footer_tag_ph = "<!-- @xda-ui-footer -->";
-        let footer_html_string = Self::get_html_chunk("dotafts-www/markup/Footer.html")?;
+        let footer_html_string = Self::get_html_chunk("dotafts-www/public/htm/Footer.html")?;
         strings::swap_in_place(markup, &footer_tag_ph, &footer_html_string);
         Ok(())
     }
@@ -101,7 +101,7 @@ impl HTMLTemplateContentInjectorPlus {
         HTMLTemplateContentInjectorPlus::add_footer_to_markup(markup)?;
 
         let content_tag_ph = "<!-- @xda-ui-content -->";
-        let splash_page_html_string = Self::get_html_chunk("dotafts-www/markup/SplashPage.html")?;
+        let splash_page_html_string = Self::get_html_chunk("dotafts-www/public/htm/SplashPage.html")?;
         strings::swap_in_place(markup, &content_tag_ph, &splash_page_html_string);
 
         Ok(())

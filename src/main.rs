@@ -2,6 +2,7 @@ use actix_files::{self as fs};
 use actix_web::{middleware::{self,Logger}, web, App, HttpServer};
 use env_logger::Env;
 
+mod app_info;
 mod config;
 mod models;
 mod util;
@@ -16,7 +17,8 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(Logger::default())
             .wrap(middleware::DefaultHeaders::new().add(("X-Dotafts-Server-API-Version", "0.1")))
-            // .wrap(middleware::Compress::default())
+            .wrap(middleware::DefaultHeaders::new().add(("Cache-Control", "max-age=3600, public")))
+            .wrap(middleware::Compress::default())
             .route("/x/api/info", web::get().to(AppRoutes::get_service_info))
             .route("/x/app/data/app.json", web::get().to(AppRoutes::get_app_config_json))
             .service(
@@ -27,20 +29,20 @@ async fn main() -> std::io::Result<()> {
                   .show_files_listing()
             )
             .service(
-                fs::Files::new("/css", "./dotafts-www/css")
+                fs::Files::new("/css", "./dotafts-www/public/css")
                   .use_last_modified(true)
                   .use_etag(true)
                   .prefer_utf8(true)
                   .show_files_listing()
             )
             .service(
-                fs::Files::new("/assets", "./dotafts-www/assets")
+                fs::Files::new("/assets", "./dotafts-www/public/assets")
                   .use_last_modified(true)
                   .use_etag(true)
                   .show_files_listing()
             )
             .service(
-                fs::Files::new("/fonts", "./dotafts-www/fonts")
+                fs::Files::new("/fonts", "./dotafts-www/public/fonts")
                   .use_last_modified(true)
                   .use_etag(true)
                   .show_files_listing()

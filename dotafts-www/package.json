@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "prettier": "prettier --write src minify.js",
-    "lint": "eslint --ext js \"src/**\"",
+    "prettier": "prettier --write src scripts",
+    "lint": "eslint \"src/**\"",
     "lint:fix": "eslint --ext js --fix \"src/**\"",
-    "copy:vendor": "node copyVendor.js",
-    "minify": "node minify.js",
+    "copy:vendor": "node scripts/copyVendor.js",
+    "minify": "node scripts/minify.js",
     "package": "run-s minify copy:*",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -43,10 +43,5 @@
     "marked": "^12.0.2",
     "sleepydogs": "^1.0.7",
     "web-vitals": "^4.0.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   }
 }
