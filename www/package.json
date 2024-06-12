@@ -1,0 +1,48 @@
+{
+  "name": "@dotafts/web",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
+    "prettier": "prettier --write src",
+    "build:browser": "webpack --config webpack/webpack.browser.js",
+    "build:node": "webpack --config webpack/webpack.node.js",
+    "build:html": "node ./.temp/server/xng-ssg.js && echo \"Done!\" && rm -rf .temp",
+    "build": "run-s build:node build:html build:browser"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@9.1.2+sha512.127dc83b9ea10c32be65d22a8efb4a65fb952e8fefbdfded39bdc3c97efc32d31b48b00420df2c1187ace28c921c902f0cb5a134a4d032b8b5295cbfa2c681e2",
+  "devDependencies": {
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@eslint/compat": "^1.0.3",
+    "@eslint/js": "^9.4.0",
+    "@types/lodash.merge": "^4.6.9",
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "babel-loader": "^9.1.3",
+    "dotenv": "^16.4.5",
+    "eslint": "9.x",
+    "eslint-plugin-react": "^7.34.2",
+    "globals": "^15.4.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.3.2",
+    "tsx": "^4.15.2",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.13.0",
+    "webpack": "^5.92.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "lodash.merge": "^4.6.2",
+    "lottie-web": "^5.12.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sleepydogs": "^1.0.7"
+  }
+}
