@@ -3,10 +3,10 @@
   --font-line-height-heading: 1.25;
 }
 
-@font-face {
+/* @font-face {
   font-family: Wubba;
   src: url("/fonts/WubbaLubbaDubDub.ttf") format(truetype);
-}
+} */
 
 .fira-sans-condensed-thin {
   font-family: "Fira Sans Condensed", sans-serif;

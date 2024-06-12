@@ -5,37 +5,8 @@
     "_id": "blog-pool",
     "directory": [
       {
-        "key": "RM-7-04",
-        "content": {
-          "filepath": "/data/blog/rm/07-04.md",
-          "metadata": {
-            "image": {
-              "src": "/assets/rm-thats-amorte.webp",
-              "alt": "Rick eating a bowl of \"spaghetti\".",
-              "aspectRatio": "16 / 9"
-            },
-            "title": "That's Amorte",
-            "source": {
-              "show": "Rick and Morty",
-              "season": "07",
-              "episode": "04"
-            }
-          },
-          "ui": {
-            "styleOverrides": {
-                "blogInfo": {
-                    "show":"font-family:Wubba,\"Fira Sans Condensed\", system-ui;color: var(--amber);"
-                }
-            },
-            "actions": [
-                {
-                    "selector": "span.blog-info-item.bii-show",
-                    "event": "click",
-                    "handlerRef": "rm-bio-nav-event"
-                }
-            ]
-          }
-        }
+        "key": "DA-AA-01",
+        "ref_data": "01.conf.json"
       }
     ]
   }

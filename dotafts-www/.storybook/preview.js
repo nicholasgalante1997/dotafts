@@ -1,6 +1,6 @@
-import '../css/root.css';
-import '../css/fonts.css';
-import '../css/global.css';
+import '../public/css/root.css';
+import '../public/css/fonts.css';
+import '../public/css/global.css';
 
 /** @type { import('@storybook/html').Preview } */
 const preview = {

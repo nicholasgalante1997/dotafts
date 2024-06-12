@@ -76,6 +76,9 @@ impl HTMLTemplateContentInjectorPlus {
             RegisteredView::Splash => {
                 Self::render_splash_page_to_markup(markup)?;
             },
+            RegisteredView::Blog => {
+                Self::render_blog_page_to_markup(markup)
+            },
             _ => {}
         };
 
@@ -103,6 +106,18 @@ impl HTMLTemplateContentInjectorPlus {
         let content_tag_ph = "<!-- @xda-ui-content -->";
         let splash_page_html_string = Self::get_html_chunk("dotafts-www/public/htm/SplashPage.html")?;
         strings::swap_in_place(markup, &content_tag_ph, &splash_page_html_string);
+
+        Ok(())
+    }
+
+    pub fn render_blog_page_to_markup(markup: &mut String) -> Result<(), Box<dyn Error>> {
+        HTMLTemplateContentInjectorPlus::add_header_to_markup(markup)?;
+        HTMLTemplateContentInjectorPlus::add_footer_to_markup(markup)?;
+
+        let content_tag_ph = "<!-- @xda-ui-content -->";
+        let mut blog_page_html_string = Self::get_html_chunk("dotafts-www/public/htm/Blog.html")?;
+
+        
 
         Ok(())
     }

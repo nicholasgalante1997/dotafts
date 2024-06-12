@@ -177,3 +177,10 @@ div.splash-animation-more-content {
         transform: translateY(0px);
     }
 }
+
+.mellow-yellow-text-gradient {
+    background: linear-gradient(to right, var(--amber), var(--rose));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

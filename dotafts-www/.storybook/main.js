@@ -14,6 +14,7 @@ const config = {
   },
   webpackFinal: async function(config, options) {
     return config;
-  }
+  },
+  staticDirs: ['../public']
 };
 export default config;

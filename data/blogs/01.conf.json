@@ -1,0 +1,28 @@
+{
+  "_key": "DA-AA-01",
+  "_source": {
+    "file": [".daa", "AA-01.markdown"]
+  },
+  "data": {
+    "ui": {
+      "core": {
+        "title": "That's Amorte, Or The Artificial Burden Of Cognizance",
+        "href": "/b/DA-AA-01.html"
+      },
+      "overrides": {
+        "style": {
+          "blogInfo": {
+            "show": "font-family:Wubba,\"Fira Sans Condensed\", system-ui;color: var(--amber);"
+          }
+        }
+      },
+      "actions": [
+        {
+          "selector": "span.blog-info-item.bii-show",
+          "event": "click",
+          "handlerRef": "rm-bio-nav-event"
+        }
+      ]
+    }
+  }
+}

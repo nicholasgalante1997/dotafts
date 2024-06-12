@@ -9,7 +9,7 @@ use crate::models::dotafts_www_utils::errors::MarkdownLoaderFileLoadError;
 pub struct MarkdownLoader;
 
 impl MarkdownLoader {
-    pub fn load_file(&self, filepath: &str) -> Result<String, Box<dyn Error>> {
+    pub fn load_file(filepath: &str) -> Result<String, Box<dyn Error>> {
         let mut file = File::open(Path::new(filepath).to_path_buf())?;
         let mut contents = String::new();
         let b_written = file.read_to_string(&mut contents)?;

@@ -45,6 +45,15 @@ pub mod js_dependency {
                 )
             );
 
+            registered_dependencies.insert(
+                String::from("gsap"),
+                (
+                    String::from("gsap"),
+                    String::from("https://cdn.jsdelivr.net/npm/gsap@3.12/+esm"),
+                    String::from("https://cdn.jsdelivr.net/npm/gsap@3.12/+esm")
+                )
+            );
+
             Self {
                 registered_dependencies
             }
@@ -58,7 +67,8 @@ pub mod js_dependency {
 
         pub fn get_all_preload_scripts_as_string(page: RegisteredView)-> Option<String> {
             let deps = match page {
-                RegisteredView::Splash => vec!["sleepydogs", "lottie-web"],
+                RegisteredView::Splash => vec!["sleepydogs", "lottie-web", "gsap"],
+                RegisteredView::Blog => vec!["sleepydogs"],
                 _ => vec![]
             };
 

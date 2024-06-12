@@ -1,5 +1,6 @@
 use actix_files::NamedFile;
 use actix_web::http::header::{CacheControl, CacheDirective};
+use actix_web::{web, HttpRequest};
 use actix_web::{http::header::ContentType,Error,HttpResponse,Responder};
 
 use crate::config::api::info::ServiceInfo;
@@ -24,5 +25,19 @@ pub async fn get_splash_page() -> Result<HttpResponse, Error> {
         .insert_header(("X-DA-Static-Asset-Version", "0.1"))
         .insert_header(CacheControl(vec![CacheDirective::NoCache]))
         .body(html)
+    )
+}
+
+pub async fn get_blog_page(req: HttpRequest) -> Result<HttpResponse, Error> {
+    let id = req.match_info().get("id").unwrap();
+    let mut html_builder = HTMLBuilder::new()?;
+    let html = html_builder.build_static_page(RegisteredView::Blog)?;
+
+    Ok(
+        HttpResponse::Ok()
+         .content_type(ContentType::html())
+         .insert_header(("X-DA-Static-Asset-Version", "0.1"))
+         .insert_header(CacheControl(vec![CacheDirective::NoCache]))
+         .body(html)
     )
 }
