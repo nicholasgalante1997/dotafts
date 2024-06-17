@@ -5,8 +5,8 @@
     "_id": "blog-pool",
     "directory": [
       {
-        "key": "DA-AA-01",
-        "ref_data": "01.conf.json"
+        "key": "01",
+        "file": "markdown/01.md"
       }
     ]
   }

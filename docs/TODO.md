@@ -36,3 +36,21 @@ Todos
 - Client Side JS Bundles are missing from the on-the-fly created markup in the html server handlers
 - SEO Missing
 - Analytics Missing
+
+We're moving to React 6/12/2024
+
+## Rust + React Web Server Migration!
+
+Todos:
+
+1. RS Remove old vanilla js app static routes
+2. RS Remove old vanilla js dynamic routes
+3. RS Clean up rust codebase
+4. RS Serve API Routes
+5. React Add Routes
+   1. Auth
+   2. Blog
+      1. Dir
+      2. Post
+   3. Contact
+6. 

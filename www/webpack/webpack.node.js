@@ -10,7 +10,7 @@ export default {
   mode: 'development',
   devtool: 'source-map',
   entry: {
-    "xng-ssg": path.resolve(process.cwd(), 'src', 'server', 'xng-ssg.tsx'),
+    main: path.resolve(process.cwd(), 'src', 'server', 'index.tsx'),
   },
   output: {
     path: path.resolve(process.cwd(), '.temp', 'server'),

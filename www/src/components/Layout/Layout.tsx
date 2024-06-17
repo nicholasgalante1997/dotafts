@@ -1,8 +1,13 @@
 import React from 'react';
-import LayoutProps from './types';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import { ErrorBoundary } from '@/components/Error';
-import { Nav } from '@/components/Nav';
 import { AuthProvider } from '@/contexts/auth';
+
+import { Nav } from '@/components/Nav';
+import { Footer } from '@/components/Footer';
+
+import LayoutProps from './types';
 
 function mapCSSToLink(css: string) {
   const href = `/css/${css}.css`;
@@ -22,6 +27,19 @@ function Layout({
   theme = 'light',
   authState
 }: LayoutProps) {
+  const [queryClient] = React.useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            // With SSR, we usually want to set some default staleTime
+            // above 0 to avoid refetching immediately on the client
+            staleTime: 60 * 1000
+          }
+        }
+      })
+  );
+
   return (
     <html>
       <head>
@@ -46,11 +64,13 @@ function Layout({
       </head>
       <body data-theme={theme}>
         <ErrorBoundary fallback={<p style={{ color: 'red' }}>An Error Occurred.</p>}>
-          <AuthProvider authState={authState}>
-            <Nav />
-            <main>{children}</main>
-            {/* <Footer /> */}
-          </AuthProvider>
+          <QueryClientProvider client={queryClient}>
+            <AuthProvider authState={authState}>
+              <Nav />
+              <main>{children}</main>
+              <Footer />
+            </AuthProvider>
+          </QueryClientProvider>
         </ErrorBoundary>
       </body>
     </html>
