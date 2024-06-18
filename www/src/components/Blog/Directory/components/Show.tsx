@@ -1,8 +1,17 @@
 import React from 'react';
+import { ShowEnum } from '@/types';
 
-function Show() {
+function getLogo(show: ShowEnum) {
+    switch(show) {
+        case ShowEnum.RickAndMorty: return 'Rick_and_Morty.svg';
+    }
+}
+
+function Show({ show }: {show: ShowEnum}) {
     return (
-        <div></div>
+        <div className="show-container">
+            <img height="40px" width="auto" src={"/assets/logos/" + getLogo(show)} />
+        </div>
     );
 }
 

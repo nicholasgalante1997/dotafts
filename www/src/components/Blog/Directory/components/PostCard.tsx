@@ -10,17 +10,17 @@ function PostCard(props: PostCardProps) {
         author,
         description,
         episode,
-        key,
+        id,
         motifs,
         season,
         show,
         synopsis,
-        title
+        title,
+        media
     } = props;
     return (
         <div className="post-card__root-container">
           <div className="post-card__media-container">
-            <img className="post-card__media" />
           </div>
           <div className="post-card__text-container">
             <div className="post-card__title-container">
@@ -28,12 +28,15 @@ function PostCard(props: PostCardProps) {
                 <Author author={author} />
             </div>
             <div className="post-card__show-container">
-                <Show />
+                <Show show={show} />
             </div>
             <div className="post-card__desc-container">
                 <p className="post-card__desc">
                     {description}
                 </p>
+            </div>
+            <div className="post-card__action-container">
+                <a href={`/posts/${id}.html`}>Read More</a>
             </div>
           </div>
         </div>

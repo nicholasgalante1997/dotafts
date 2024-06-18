@@ -1,9 +1,10 @@
 import { AuthorLike } from './Author';
+import { Media } from './Media';
 import { Motif } from './Motif';
 import { ShowEnum } from './Show';
 
 export interface PostData {
-  readonly key: number | string;
+  readonly id: number | string;
   title: string;
   description: string;
   author: AuthorLike;
@@ -12,4 +13,5 @@ export interface PostData {
   episode: number;
   synopsis: string;
   motifs: Motif[];
+  media: Media[];
 }
