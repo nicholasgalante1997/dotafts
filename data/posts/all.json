@@ -1,0 +1,20 @@
+[
+    {
+        "id": "01",
+        "title": "That's Amorte, Or The Artificial Burden Of Cognizance",
+        "description": "TODO",
+        "author": "Washington Irving",
+        "show": "Rick and Morty",
+        "season": "07",
+        "episode": "04",
+        "synopsis": "TODO",
+        "motifs": [],
+        "media": [
+            {
+                "source": "/assets/rm-thats-amorte.webp",
+                "alt": "Rick eating a bowl of spaghetti.",
+                "aspectRatio": "16 / 9"
+            }
+        ]
+    }
+]
