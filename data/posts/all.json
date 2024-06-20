@@ -1,20 +1,77 @@
 [
     {
         "id": "01",
-        "title": "That's Amorte, Or The Artificial Burden Of Cognizance",
-        "description": "TODO",
+        "title": "An Artificial Burden Of Cognizance",
+        "description": "I think it's fair to say that we're constantly learning a lot and nothing at all.",
         "author": "Washington Irving",
         "show": "Rick and Morty",
         "season": "07",
         "episode": "04",
-        "synopsis": "TODO",
-        "motifs": [],
+        "synopsis": "This one's a real a-spicy meatball!",
+        "motifs": [
+            {
+                "display": "Complexity"
+            },
+            {
+                "display": "Humanism"
+            },
+            {
+                "display": "Capitalism"
+            }
+        ],
         "media": [
             {
                 "source": "/assets/rm-thats-amorte.webp",
                 "alt": "Rick eating a bowl of spaghetti.",
                 "aspectRatio": "16 / 9"
             }
-        ]
+        ],
+        "ui": {
+            "card": {
+                "background": "soft-blue-radial-gradient"
+            }
+        }
+    },
+    {
+        "id": "02",
+        "title": "The Breast Cancer Show Ever Episode",
+        "description": "The story isn't always about you, but when it is make it count.",
+        "author": "Washington Irving",
+        "show": "South Park",
+        "season": "TODO",
+        "episode": "TODO",
+        "synopsis": "Principal Veronica is a breast cancer survivor.",
+        "motifs": [
+            {
+                "display": "Tearjerker"
+            }
+        ],
+        "media": [],
+        "ui": {
+            "card": {
+                "background": "soft-blue-radial-gradient"
+            }
+        }
+    },
+    {
+        "id": "03",
+        "title": "The Devil's Hands are Idle Playthings",
+        "description": "Destiny has cheated me. Maybe it's cheated all of us.",
+        "author": "Washington Irving",
+        "show": "Futurama",
+        "season": "05",
+        "episode": "TODO",
+        "synopsis": "Fry makes a deal with the robot devil, at a cost he only later comes to understand.",
+        "motifs": [
+            {
+                "display": "Love"
+            }
+        ],
+        "media": [],
+        "ui": {
+            "card": {
+                "background": "soft-blue-radial-gradient"
+            }
+        }
     }
 ]

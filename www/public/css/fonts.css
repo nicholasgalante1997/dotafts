@@ -3,11 +3,6 @@
   --font-line-height-heading: 1.25;
 }
 
-/* @font-face {
-  font-family: Wubba;
-  src: url("/fonts/WubbaLubbaDubDub.ttf") format(truetype);
-} */
-
 .fira-sans-condensed-thin {
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 100;
@@ -179,8 +174,4 @@ p {
   line-height: var(--font-line-height-body);
   font-size: 1rem;
   margin-block: calc(0.25 * var(--spacing-unit));
-}
-
-.rick-and-morty-typestack {
-  font-family: Wubba, "Fira Sans Condensed", system-ui;
 }

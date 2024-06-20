@@ -1,27 +1,17 @@
 import dotenv from 'dotenv';
-import fs from 'fs';
 import path from 'path';
 import webpack from 'webpack';
 
+import { getEntrypoints } from './browser/entry.js';
+import { getPlugins } from './browser/plugins.js';
+
 dotenv.config();
-console.log(JSON.stringify(process.env, null, 2));
 
-function getEntrypoints() {
-    const clientScriptsDirRoot = path.resolve(process.cwd(), 'src', 'browser');
-    const dirEnts = fs.readdirSync(clientScriptsDirRoot, { encoding: 'utf-8', withFileTypes: true });
-    let entryObject = {};
-    for (const dirEnt of dirEnts) {
-      const { parentPath, name } = dirEnt;
-      const [file,] = name.split('.');
-      Object.assign(entryObject, { [file.toLowerCase()]: path.resolve(parentPath, name) });
-    }
-    return entryObject;
-}
-
-/** @type {webpack.Configuration} */
-const config = {
-  mode: 'production',
-  entry: getEntrypoints(),
+/** @type {(env, argv) => webpack.Configuration} */
+const config = (env, argv) => ({
+  mode: env.production ? 'production' : 'development',
+  devtool: env.production ? false : 'eval',
+  entry: env.production ? getEntrypoints() : path.resolve(process.cwd(), 'src', 'dev', 'index.tsx'),
   output: {
     clean: true,
     path: path.resolve(process.cwd(), 'public', 'dist', 'js'),
@@ -33,6 +23,12 @@ const config = {
     outputModule: true
   },
   target: ['web', 'es2022'],
+  devServer: {
+    port: 4041,
+    compress: true,
+    open: true,
+    hot: true,
+  },
   module: {
     rules: [
       {
@@ -66,11 +62,7 @@ const config = {
       fs: false
     }
   },
-  plugins: [
-    new webpack.ProvidePlugin({ process: 'process/browser' }),
-    new webpack.EnvironmentPlugin({ ...process.env }),
-    new webpack.ProgressPlugin()
-  ]
-};
+  plugins: getPlugins(env)
+});
 
 export default config;

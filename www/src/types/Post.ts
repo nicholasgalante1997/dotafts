@@ -14,4 +14,9 @@ export interface PostData {
   synopsis: string;
   motifs: Motif[];
   media: Media[];
+  ui: {
+    card: {
+      background: string;
+    }
+  }
 }

@@ -7,8 +7,6 @@ import PostCard from './components/PostCard';
 function BlogDirectory() {
   const { data, error, isLoading, isError } = usePostsData();
 
-  console.log({ data });
-
   if (isLoading) {
     return <BlogDirectorySkeleton />
   }
@@ -21,7 +19,7 @@ function BlogDirectory() {
     <div className="blog-dir__root-container">
       <h1>Posts</h1>
       <div className="blog-dir__post-card-container">
-        {data && data.map((card) => <PostCard {...card} />)}
+        {data && data.map((card) => <PostCard key={card.id} {...card} />)}
       </div>
     </div>
   );

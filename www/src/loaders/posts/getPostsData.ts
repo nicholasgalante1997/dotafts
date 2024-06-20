@@ -1,17 +1,14 @@
 import { Option } from 'sleepydogs';
+import APIClient from '@/lib/models/API';
 import { PostData } from '@/types/Post';
 
 async function getPostsData() {
   const callback = async () => {
-    const url = '/api/posts/all';
+    const url = APIClient.getEndpoint('posts');
     const res = await fetch(url, {
       mode: 'same-origin',
       method: 'GET',
-      headers: {
-        'X-DOT-AFTS-CLIENT-VERSION': '1.0',
-        Accept: 'application/json',
-        'Accept-Encoding': 'gzip, br'
-      }
+      headers: APIClient.getHeaders('GET posts')
     });
     const json = await res.json();
     return json as PostData[];

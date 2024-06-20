@@ -5,13 +5,14 @@
   "scripts": {
     "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
     "prettier": "prettier --write src",
-    "build:browser": "webpack --config webpack/webpack.browser.js",
-    "build:node": "webpack --config webpack/webpack.node.js",
+    "build:browser": "webpack --env production --config webpack/browser/prod.js",
+    "build:node": "webpack --env production --config webpack/webpack.node.js",
     "build:html": "node ./.temp/server/main.js && echo \"Done!\" && rm -rf .temp",
     "build": "run-s build:node build:html build:browser",
     "clean:html": "rm -f public/*.html public/**/*.html",
     "clean:js": "rm -rf public/dist",
     "clean": "run-p clean:*",
+    "dev": "webpack serve --env development --config webpack/browser/dev.js",
     "package": "run-s clean build",
     "start": "http-server -p 3000 -d -i -o /index.html -e html public",
     "storybook": "storybook dev -p 6006",
@@ -58,12 +59,15 @@
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.13.0",
     "webpack": "^5.92.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.45.0",
+    "classnames": "^2.5.1",
     "dompurify": "^3.1.5",
     "front-matter": "^4.0.2",
+    "html-webpack-plugin": "^5.6.0",
     "lodash.merge": "^4.6.2",
     "lottie-web": "^5.12.2",
     "react": "^18.3.1",

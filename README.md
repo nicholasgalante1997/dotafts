@@ -1,13 +1,12 @@
 # DOTAFTS
 
-![banner]()
-
-![badge]()
-![badge]()
-[![license](https://img.shields.io/github/license/:user/:repo.svg)](LICENSE)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 TODO: Description Here
+
+## Activity
+
+![Alt](https://repobeats.axiom.co/api/embed/79aeb6d62b816cd80b73c84c4c8912aeaeacc968.svg "Repobeats analytics image")
 
 ## Table of Contents
 
@@ -16,7 +15,6 @@ TODO: Description Here
 - [Usage](#usage)
 - [API](#api)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Background
 
@@ -33,16 +31,13 @@ This module depends upon a knowledge of [Markdown]().
 
 ## Usage
 
-```
-```
-
-Note: The `license` badge image link at the top of this file should be updated with the correct `:user` and `:repo`.
-
 ### Any optional sections
 
 ## API
 
-### Any optional sections
+## Icons
+
+We use CSS GG Icons. For more information, please see [css.gg](https://css.gg/app).
 
 ## More optional sections
 
@@ -53,9 +48,3 @@ See [the contributing file](CONTRIBUTING.md)!
 PRs accepted.
 
 Small note: If editing the Readme, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
-
-### Any optional sections
-
-## License
-
-[MIT © Richard McRichface.](../LICENSE)

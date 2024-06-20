@@ -5,12 +5,18 @@ import webpack from 'webpack';
 dotenv.config();
 console.log(JSON.stringify(process.env, null, 2));
 
-/** @type {webpack.Configuration} */
-export default {
-  mode: 'development',
-  devtool: 'source-map',
+/** @type {(env: any, argv) => webpack.Configuration} */
+export default (env, argv) => ({
+  mode: env.production ? 'production' : 'development',
+  devtool: env.production ? false : 'eval',
   entry: {
     main: path.resolve(process.cwd(), 'src', 'server', 'index.tsx'),
+  },
+  devServer: {
+    port: 4040,
+    compress: true,
+    open: true,
+    hot: true,
   },
   output: {
     path: path.resolve(process.cwd(), '.temp', 'server'),
@@ -42,4 +48,4 @@ export default {
     global: false
   },
   plugins: [new webpack.EnvironmentPlugin({ ...process.env })]
-};
+});

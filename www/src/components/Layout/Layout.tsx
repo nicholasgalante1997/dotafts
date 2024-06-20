@@ -19,16 +19,6 @@ function mapCSSToLink(css: string) {
   );
 }
 
-const queryConfig = {
-  // defaultOptions: {
-  //   queries: {
-  //     // With SSR, we usually want to set some default staleTime
-  //     // above 0 to avoid refetching immediately on the client
-  //     staleTime: 60 * 1000
-  //   }
-  // }
-};
-
 function Layout({
   children,
   description,
@@ -37,16 +27,17 @@ function Layout({
   theme = 'light',
   authState
 }: LayoutProps) {
-  const [queryClient] = React.useState(
-    () =>
-      new QueryClient(queryConfig)
-  );
+  const [queryClient] = React.useState(() => new QueryClient());
 
   return (
     <html>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="preconnect" href="https://css.gg/css" />
+        <link href="https://css.gg/css" rel="stylesheet" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 

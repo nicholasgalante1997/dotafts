@@ -1,10 +1,25 @@
 :root {
-    --post-card-desktop-height: 396px;
-    --post-card-desktop-width: 464px;
+    --post-card-desktop-height: 240px;
+    --post-card-desktop-width: 280px;
 
     --post-card-background: #0d1321;
     --post-card-text-color: #fff;
     --post-card-subtext-color: #f8f8f8;
+}
+
+div.blog-dir__root-container {
+    box-sizing: border-box;
+    padding: 16px;
+    width: 100%;
+}
+
+div.blog-dir__post-card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 div.post-card__root-container {
@@ -16,7 +31,7 @@ div.post-card__root-container {
     border-radius: 4px;
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 8px;
     position: relative;
 
     height: var(--post-card-desktop-height);
@@ -27,44 +42,14 @@ div.post-card__root-container {
     max-width: var(--post-card-desktop-width);
     min-width: var(--post-card-desktop-width);
 
-    background: var(--post-card-background);
+    flex: 1 var(--post-card-desktop-width);
+
     transition: all 300ms;
 }
 
 div.post-card__root-container:hover {
     cursor: pointer;
     transform: scale(1.025);
-}
-
-div.post-card__media-container {
-    --width: calc(var(--post-card-desktop-width) * 0.4);
-    width: var(--width);
-    min-width: var(--width);
-    max-width: var(--width);
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: inline-flex;
-    overflow: hidden;
-
-    background: linear-gradient(
-        45deg,
-        var(--amber) 0%,
-        var(--orange-pantone) 20%,
-        var(--rose) 50%,
-        var(--azure) 75%,
-        var(--blue-violet) 100%
-    );
-
-    img {
-        height: 100%;
-        width: auto;
-        overflow: hidden;
-        object-fit: cover;
-        object-position: center;
-        image-rendering: optimizeQuality;
-        image-orientation: from-image;
-    }
 }
 
 div.post-card__text-container {
@@ -75,19 +60,34 @@ div.post-card__text-container {
     justify-content: flex-start;
     align-items: flex-start;
     margin: 0;
-    padding: 16px;
+    padding: 8px;
+    position: relative;
+    isolation: isolate;
+    background: rgba(255, 255, 255, 0.15);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    z-index: 0;
+
+    div.post-card__gloss-container {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
 
     h1 {
         font-size: 24px;
-        margin-block: 4px;
+        margin-block: 2px;
         text-decoration-line: underline;
         text-decoration-thickness: 2px;
         text-underline-offset: 4px;
         text-decoration-color: white;
+        z-index: 2;
     }
 
     div.post-card__desc-container {
-        margin-top: 24px;
+        margin-top: 8px;
         max-width: 95%;
 
         p {
@@ -97,7 +97,7 @@ div.post-card__text-container {
             line-height: 1.15;
             font-style: italic;
             display: -webkit-box;
-            -webkit-line-clamp: 9;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;  
             overflow: hidden;
         }
@@ -113,10 +113,38 @@ span.author-string {
 
 div.show-container {
     position: absolute;
-    left: 8px;
+    right: 8px;
     bottom: 0;
 }
 
 div.post-card__action-container {
     margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+
+.dotafts-gradient {
+    background: linear-gradient(
+        45deg,
+        var(--amber) 0%,
+        var(--orange-pantone) 20%,
+        var(--rose) 50%,
+        var(--azure) 75%,
+        var(--blue-violet) 100%
+    );
+}
+
+.soft-green-radial-gradient {
+    background-image: radial-gradient( circle 1024px at -13.6% 51.7%,  rgba(0,56,68,1) 0%, rgba(163,217,185,1) 51.5%, rgba(255,252,247,1) 88.6% );
+}
+
+.soft-blue-radial-gradient {
+    background-image: radial-gradient( circle farthest-corner at 3.6% 26.5%,  rgba(106,19,253,1) 0.1%, rgba(18,134,242,1) 90% );
+}
+
+.bright-green-radial-gradient {
+    background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
 }

@@ -10,7 +10,7 @@ function getLogo(show: ShowEnum) {
 function Show({ show }: {show: ShowEnum}) {
     return (
         <div className="show-container">
-            <img height="40px" width="auto" src={"/assets/logos/" + getLogo(show)} />
+            <img height="24px" width="auto" src={"/assets/logos/" + getLogo(show)} />
         </div>
     );
 }
