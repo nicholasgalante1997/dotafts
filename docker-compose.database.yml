@@ -1,0 +1,15 @@
+services:
+  postgresdb:
+    image: postgres:16
+    env_file:
+      - ./.env.database
+    ports:
+      - "5432:5432"
+    networks:
+      - dotafts-net
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  postgres_data:
