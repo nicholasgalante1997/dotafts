@@ -17,12 +17,12 @@ use services as AppServices;
 #[shuttle_runtime::main]
 async fn main() -> ShuttleActixWeb<impl FnOnce(&mut ServiceConfig) + Send + Clone + 'static> {
     // env_logger::init_from_env(Env::default().default_filter_or("info"));
-    let pool = Database::establish_connection()
-        .await
-        .expect("Failed to create DB Connection Pool. Closing application...");
+    // let pool = Database::establish_connection()
+    //     .await
+    //     .expect("Failed to create DB Connection Pool. Closing application...");
 
     let config = move |cfg: &mut ServiceConfig| {
-        cfg.app_data(web::Data::new(pool.clone()));
+        // cfg.app_data(web::Data::new(pool.clone()));
         cfg.service(
             web::scope("/api")
                 .wrap(Logger::default())
