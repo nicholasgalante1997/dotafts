@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     libssl-dev \
     pkg-config \
+    libpq-dev \
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y \
     && . $HOME/.cargo/env \
     && rustup update stable \
@@ -21,11 +22,10 @@ WORKDIR /home/app/dotafts
 # Copy our server dependencies
 COPY Cargo.toml Cargo.lock ./
 
-# Create a null src folder
-RUN mkdir src
-
 # Copy our source code
 COPY ./src/ ./src/
+COPY ./data/ ./data/
+COPY ./markdown/ ./markdown/
 
 # Build our production server
 RUN . $HOME/.cargo/env && cargo build --release
@@ -69,6 +69,7 @@ FROM debian:buster-slim as runner
 RUN apt-get update && apt-get install -y \
     libssl-dev \
     ca-certificates \
+    libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # Create working directory
@@ -77,13 +78,13 @@ WORKDIR /app/dotafts
 
 # Copy Rust binary and Node.js build artifacts
 COPY --from=builder /home/app/dotafts/target/release/dotafts-server /app/dotafts
+COPY --from=builder /home/app/dotafts/data /app/dotafts/data
+COPY --from=builder /home/app/dotafts/markdown /app/dotafts/markdown
 COPY --from=nodebuilder /home/app/dotafts/www/public /app/dotafts/www/public
 
 # Ensure the Rust binary has execution permissions
 RUN chmod +x /app/dotafts/dotafts-server
 
-# Expose the port the application runs on
-EXPOSE 8080
 
 # Run the Rust binary
 CMD ["./dotafts-server"]

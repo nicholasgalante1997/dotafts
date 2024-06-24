@@ -17,6 +17,6 @@ export interface PostData {
   ui: {
     card: {
       background: string;
-    }
-  }
+    };
+  };
 }

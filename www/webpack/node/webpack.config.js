@@ -3,7 +3,6 @@ import path from 'path';
 import webpack from 'webpack';
 
 dotenv.config();
-console.log(JSON.stringify(process.env, null, 2));
 
 /** @type {(env: any, argv) => webpack.Configuration} */
 export default (env, argv) => ({

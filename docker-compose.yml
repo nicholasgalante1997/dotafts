@@ -11,6 +11,8 @@ services:
       - postgresdb
     env_file:
       - .env
+    environment:
+      - RS_ENV=DOCKER
     expose:
       - "8080"
     ports:

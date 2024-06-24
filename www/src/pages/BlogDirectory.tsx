@@ -5,7 +5,7 @@ import { BlogDirectory as BlogDirComponent } from '@/components/Blog/Directory';
 
 function BlogDirectory() {
   return (
-    <Layout title="@Dotafts | Blog Directory" description="TODO">
+    <Layout css={['blog-directory']} title="@Dotafts | Blog Directory" description="TODO">
       <BlogDirComponent />
     </Layout>
   );

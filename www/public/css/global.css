@@ -17,6 +17,8 @@ body {
 
     background-color: var(--pure-black);
     color: var(--pure-white);
+
+    scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar,

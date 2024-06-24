@@ -5,6 +5,7 @@ div.splash-text-container {
     margin: 0;
     padding-left: calc(2 * var(--spacing-unit));
     margin-bottom: calc(3 * var(--spacing-unit));
+    position: relative;
 
     --splash-text-item-max-width: 800px;
 
@@ -129,9 +130,7 @@ div.splash-animation-wrapper {
 }
 
 div.splash-animation-more-content {
-    margin-top: auto;
-    position: absolute;
-    bottom: 48px;
+    margin-top: 64px;
     opacity: 0;
     animation-name: splash-animation-rise-into-focus;
     animation-duration: 300ms;
@@ -183,4 +182,12 @@ div.splash-animation-more-content {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+div.splash-content-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
 }

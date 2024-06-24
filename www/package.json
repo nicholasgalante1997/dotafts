@@ -6,7 +6,7 @@
     "lint": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
     "prettier": "prettier --write src",
     "build:browser": "webpack --env production --config webpack/browser/prod.js",
-    "build:node": "webpack --env production --config webpack/webpack.node.js",
+    "build:node": "webpack --env production --config webpack/node/webpack.config.js",
     "build:html": "node ./.temp/server/main.js && echo \"Done!\" && rm -rf .temp",
     "build": "run-s build:node build:html build:browser",
     "clean:html": "rm -f public/*.html public/**/*.html",

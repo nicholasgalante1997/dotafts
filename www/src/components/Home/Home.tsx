@@ -1,10 +1,11 @@
 import React from 'react';
-import Hero from './components/Hero/Hero';
+import { SplashPageContentSection, SplashPageHeroSection } from './components';
 
 function Home() {
   return (
     <>
-      <Hero />
+      <SplashPageHeroSection />
+      <SplashPageContentSection />
     </>
   );
 }

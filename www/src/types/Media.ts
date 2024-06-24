@@ -1,5 +1,5 @@
 export type Media = {
-    source: string;
-    alt: string;
-    aspectRatio?: string;
-}
+  source: string;
+  alt: string;
+  aspectRatio?: string;
+};

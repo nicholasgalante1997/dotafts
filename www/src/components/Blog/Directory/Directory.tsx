@@ -8,11 +8,11 @@ function BlogDirectory() {
   const { data, error, isLoading, isError } = usePostsData();
 
   if (isLoading) {
-    return <BlogDirectorySkeleton />
+    return <BlogDirectorySkeleton />;
   }
 
   if (isError || error) {
-    return <Redirect url='/400.html' />
+    return <Redirect url="/400.html" />;
   }
 
   return (
@@ -26,9 +26,7 @@ function BlogDirectory() {
 }
 
 function BlogDirectorySkeleton() {
-  return (
-    <div />
-  );
+  return <div />;
 }
 
 export default React.memo(BlogDirectory);

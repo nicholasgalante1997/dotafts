@@ -26,44 +26,40 @@ function HomeWithAnimation() {
           }
         });
       }
-    
+
       runSplashAnimation();
     });
   }, []);
 
-  return (
-    <Home />
-  )
+  return <Home />;
 }
 
 const routes = createBrowserRouter([
-    {
-        path: "/",
-        element: <HomeWithAnimation />
-    },
-    {
-      path: "blog/directory",
-      element: <Directory />
-    }
-])
+  {
+    path: '/',
+    element: <HomeWithAnimation />
+  },
+  {
+    path: 'blog/directory',
+    element: <Directory />
+  }
+]);
 
 function App() {
-    const [queryClient] = useState(() => new QueryClient());
-    return (
-      <ErrorBoundary fallback={<p style={{ color: 'red' }}>An Error Occurred.</p>}>
-        <QueryClientProvider client={queryClient}>
-          <AuthProvider authState={{ _auth: {} }}>
-            <Nav />
-            <main>
-              <RouterProvider router={routes} />
-            </main>
-            <Footer />
-          </AuthProvider>
-        </QueryClientProvider>
-      </ErrorBoundary>
-    );
+  const [queryClient] = useState(() => new QueryClient());
+  return (
+    <ErrorBoundary fallback={<p style={{ color: 'red' }}>An Error Occurred.</p>}>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider authState={{ _auth: {} }}>
+          <Nav />
+          <main>
+            <RouterProvider router={routes} />
+          </main>
+          <Footer />
+        </AuthProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
+  );
 }
 
-createRoot(document.getElementById('root')!)
-  .render(<App />);
-
+createRoot(document.getElementById('root')!).render(<App />);
