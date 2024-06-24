@@ -5,8 +5,6 @@ use actix_web::{
 
 use shuttle_actix_web::ShuttleActixWeb;
 
-use env_logger::Env;
-
 mod config;
 mod database;
 mod routes;
@@ -18,7 +16,7 @@ use services as AppServices;
 
 #[shuttle_runtime::main]
 async fn main() -> ShuttleActixWeb<impl FnOnce(&mut ServiceConfig) + Send + Clone + 'static> {
-    env_logger::init_from_env(Env::default().default_filter_or("info"));
+    // env_logger::init_from_env(Env::default().default_filter_or("info"));
     let pool = Database::establish_connection()
         .await
         .expect("Failed to create DB Connection Pool. Closing application...");
