@@ -1,2 +1,2 @@
 #! /bin/bash
-cargo shuttle run --external --port 8123
+cargo shuttle run --external --port 8080

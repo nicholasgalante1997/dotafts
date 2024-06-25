@@ -8,8 +8,8 @@ type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'OPTIONS';
 type ServiceCall = `${HttpMethod} ${APIServiceName}`;
 
 class APIClient {
-  private static PROD_POST_DATA_URL = '/api/post/' as const;
-  private static DEV_POST_DATA_URL = '/api/post/' as const;
+  private static PROD_POST_DATA_URL = '/markdown/' as const;
+  private static DEV_POST_DATA_URL = '/markdown/' as const;
   private static PROD_POSTS_DATA_URL = '/api/posts/all' as const;
   private static DEV_POSTS_DATA_URL = '/api/posts/all.json' as const;
   private static PROD_WRITE_DATA_URL = '/api/write' as const;
@@ -41,13 +41,18 @@ class APIClient {
 
   getHeaders(serviceCall: ServiceCall): Headers {
     let headers = new Headers();
+    headers.set('X-DOT-AFTS-CLIENT-VERSION', '1.0');
     switch (serviceCall) {
       case 'GET posts': {
-        headers.set('X-DOT-AFTS-CLIENT-VERSION', '1.0');
         headers.set('Accept', 'application/json');
         headers.set('Accept-Encoding', 'gzip, br');
         return headers;
       }
+      case 'GET post': {
+        headers.set('Accept', 'text/markdown');
+        headers.set('Accept-Encoding', 'gzip, br');
+        return headers;
+      };
       default: {
         return headers;
       }

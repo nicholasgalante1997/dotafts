@@ -3,6 +3,7 @@ import { usePostsData } from './hooks/usePostsData';
 import Redirect from '@/components/Redirect/Redirect';
 
 import { PostData } from '@/types';
+import ExecEnv from '@/lib/models/ExecEnv';
 
 function BlogDirectory() {
   const { data, error, isLoading, isError } = usePostsData();
@@ -27,7 +28,7 @@ function BlogDirectory() {
 
 function toPostPage(id: string | number) {
   if (typeof window !== "undefined") {
-    window.location.assign(`/blog/post?postIndex=${id}&_ref=internal-blog-directory`);
+    window.location.assign(`/blog/post${ExecEnv.NodeEnv === 'production' ? '.html' : ''}?postIndex=${id}&_ref=internal-blog-directory`);
   }
 }
 

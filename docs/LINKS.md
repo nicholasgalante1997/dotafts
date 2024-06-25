@@ -40,6 +40,7 @@
 - [Rust indexOf string](https://stackoverflow.com/questions/66272984/how-to-find-in-a-substring-starting-at-a-specific-index-in-rust)
 - [Rust modifying struct fields](https://stackoverflow.com/questions/27022848/how-i-can-mutate-a-structs-field-from-a-method)
 - [Actix Web Examples](https://github.com/actix/examples)
+- [Actix Web HttpResponse Building](https://actix.rs/docs/response/)
 
 ## Database Links
 

@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
-function Post() {
+import { usePostData } from './hooks/usePostData';
+import { PostData } from '@/types';
+
+function Post({ children }: PostData & { children: string }) {
     return (
-        false
+        <div>
+            <ReactMarkdown children={children} />
+        </div>
     );
 }
 
