@@ -2,27 +2,28 @@ use actix_web::{
     middleware::{self, Logger},
     web::{self, ServiceConfig}
 };
-
 use shuttle_actix_web::ShuttleActixWeb;
+use sqlx::PgPool;
 
 mod config;
 mod database;
 mod routes;
 mod services;
 
-use database as Database;
 use routes as AppRoutes;
 use services as AppServices;
 
 #[shuttle_runtime::main]
-async fn main() -> ShuttleActixWeb<impl FnOnce(&mut ServiceConfig) + Send + Clone + 'static> {
-    // env_logger::init_from_env(Env::default().default_filter_or("info"));
-    // let pool = Database::establish_connection()
-    //     .await
-    //     .expect("Failed to create DB Connection Pool. Closing application...");
-
+async fn main(
+    #[shuttle_shared_db::Postgres] pool: PgPool,
+) -> ShuttleActixWeb<impl FnOnce(&mut ServiceConfig) + Send + Clone + 'static> {
+    sqlx::migrate!()
+        .run(&pool)
+        .await
+        .expect("Failed to run migrations");
+    
     let config = move |cfg: &mut ServiceConfig| {
-        // cfg.app_data(web::Data::new(pool.clone()));
+        cfg.app_data(web::Data::new(pool.clone()));
         cfg.service(
             web::scope("/api")
                 .wrap(Logger::default())
