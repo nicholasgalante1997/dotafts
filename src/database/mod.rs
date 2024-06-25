@@ -4,8 +4,7 @@ use std::env;
 use log::info;
 
 pub async fn establish_connection() -> sqlx::Result<sqlx::PgPool> {
-
-    info!("Setting DB Env variables...");    
+    info!("Setting DB Env variables...");
     dotenv::dotenv().ok();
     info!("DB Env vars set!");
 
