@@ -1,7 +1,7 @@
 [
     {
         "id": "01",
-        "title": "An Artificial Burden Of Cognizance",
+        "title": "Rick and Morty: That's Amorte (Season 07, Episode 04), OR An Artificial Burden Of Cognizance",
         "description": "I think it's fair to say that we're constantly learning a lot and nothing at all.",
         "author": "Washington Irving",
         "show": "Rick and Morty",
@@ -34,7 +34,7 @@
     },
     {
         "id": "02",
-        "title": "The Breast Cancer Show Ever Episode",
+        "title": "South Park: The Breast Cancer Show Ever (Season 12 Episode 9), OR What's Inexplicably Beautiful About the Attachment to the Self",
         "description": "The story isn't always about you, but when it is make it count.",
         "author": "Washington Irving",
         "show": "South Park",
@@ -46,7 +46,13 @@
                 "display": "Tearjerker"
             }
         ],
-        "media": [],
+        "media": [
+            {
+                "source": "/assets/wendy-principal-victoria.webp",
+                "alt": "Rick eating a bowl of spaghetti.",
+                "aspectRatio": "16 / 9"
+            }
+        ],
         "ui": {
             "card": {
                 "background": "soft-blue-radial-gradient"
@@ -67,7 +73,13 @@
                 "display": "Love"
             }
         ],
-        "media": [],
+        "media": [
+            {
+                "source": "/assets/devils-hands-are-idle-playthings.webp",
+                "alt": "Rick eating a bowl of spaghetti.",
+                "aspectRatio": "16 / 9"
+            }
+        ],
         "ui": {
             "card": {
                 "background": "soft-blue-radial-gradient"

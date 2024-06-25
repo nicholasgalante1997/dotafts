@@ -1,13 +1,8 @@
 import React from 'react';
-import { SplashPageContentSection, SplashPageHeroSection } from './components';
+import { SplashPageHeroSection } from './components';
 
 function Home() {
-  return (
-    <>
-      <SplashPageHeroSection />
-      <SplashPageContentSection />
-    </>
-  );
+  return <SplashPageHeroSection />; 
 }
 
 export default React.memo(Home);
