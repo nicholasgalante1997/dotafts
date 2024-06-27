@@ -4,6 +4,8 @@
         "title": "Rick and Morty: That's Amorte (Season 07, Episode 04), OR An Artificial Burden Of Cognizance",
         "description": "I think it's fair to say that we're constantly learning a lot and nothing at all.",
         "author": "Washington Irving",
+        "releaseDate": "06/26/2024",
+        "estimatedReadingTime": "14 minutes",
         "show": "Rick and Morty",
         "season": "07",
         "episode": "04",
@@ -25,18 +27,15 @@
                 "alt": "Rick eating a bowl of spaghetti.",
                 "aspectRatio": "16 / 9"
             }
-        ],
-        "ui": {
-            "card": {
-                "background": "soft-blue-radial-gradient"
-            }
-        }
+        ]
     },
     {
         "id": "02",
         "title": "South Park: The Breast Cancer Show Ever (Season 12 Episode 9), OR What's Inexplicably Beautiful About the Attachment to the Self",
         "description": "The story isn't always about you, but when it is make it count.",
         "author": "Washington Irving",
+        "releaseDate": "06/26/2024",
+        "estimatedReadingTime": "14 minutes",
         "show": "South Park",
         "season": "TODO",
         "episode": "TODO",
@@ -64,6 +63,8 @@
         "title": "The Devil's Hands are Idle Playthings",
         "description": "Destiny has cheated me. Maybe it's cheated all of us.",
         "author": "Washington Irving",
+        "releaseDate": "06/26/2024",
+        "estimatedReadingTime": "14 minutes",
         "show": "Futurama",
         "season": "05",
         "episode": "TODO",

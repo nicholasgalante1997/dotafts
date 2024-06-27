@@ -10,6 +10,7 @@ import { AuthProvider } from '@/contexts/auth';
 
 import Home from '@/components/Home/Home';
 import Directory from '@/components/Blog/Directory/Directory';
+import { Post } from '@/components/Blog/Post';
 
 function HomeWithAnimation() {
   useEffect(() => {
@@ -42,6 +43,10 @@ const routes = createBrowserRouter([
   {
     path: 'blog/directory',
     element: <Directory />
+  },
+  {
+    path: 'blog/post',
+    element: <Post />
   }
 ]);
 

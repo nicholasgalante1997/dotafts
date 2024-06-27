@@ -28,7 +28,7 @@ function BlogDirectory() {
 
 function toPostPage(id: string | number) {
   if (typeof window !== "undefined") {
-    window.location.assign(`/blog/post${ExecEnv.NodeEnv === 'production' ? '.html' : ''}?postIndex=${id}&_ref=internal-blog-directory`);
+    window.location.assign(`/blog/post.html?postIndex=${id}&_ref=internal-blog-directory`);
   }
 }
 

@@ -32,6 +32,10 @@ const config = (env, argv) => ({
       {
         directory: path.resolve(process.cwd(), '..', 'data', 'posts'),
         publicPath: '/api/posts'
+      },
+      {
+        directory: path.resolve(process.cwd(), '..', 'markdown'),
+        publicPath: '/markdown'
       }
     ]
   },

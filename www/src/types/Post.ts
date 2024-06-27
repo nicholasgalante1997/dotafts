@@ -8,15 +8,12 @@ export interface PostData {
   title: string;
   description: string;
   author: AuthorLike;
+  releaseDate: string;
+  estimatedReadingTime: string;
   show: ShowEnum;
   season: number;
   episode: number;
   synopsis: string;
   motifs: Motif[];
   media: Media[];
-  ui: {
-    card: {
-      background: string;
-    };
-  };
 }
