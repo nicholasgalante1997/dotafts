@@ -13,9 +13,10 @@ class Href {
     return ExecEnv.NodeEnv === 'production' ? '/index.html' : '/';
   }
 
-  get ContactUs() {
-    return ExecEnv.NodeEnv === 'production' ? '/contact-us.html' : '/contact-us';
+  get Join() {
+    return ExecEnv.NodeEnv === 'production' ? '/join.html' : '/join';
   }
+
 }
 
 export default new Href();

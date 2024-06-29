@@ -17,12 +17,12 @@ function Nav() {
         target="_self"
         className="fira-sans-condensed-regular blog-header-item ml-auto"
       >
-        Blog
-        <Icon type="open" height="16px" width="16x" />
+        Posts
+        <Icon type="open" height="16px" width="16px" />
       </a>
-      <a href="/blog" target="_self" className="fira-sans-condensed-regular blog-header-item">
-        Contact Us
-        <Icon type="open" height="16px" width="16x" />
+      <a href={DotaftsHref.Join} target="_self" className="fira-sans-condensed-regular blog-header-item">
+        Join
+        <Icon type="open" height="16px" width="16px" />
       </a>
     </header>
   );
