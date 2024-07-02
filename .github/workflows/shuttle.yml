@@ -13,3 +13,11 @@ jobs:
         steps:
             - name: Start release process
               run: echo "Starting release process to shuttle.rs"
+
+            - uses: actions/checkout@v4
+
+            - name: Prints working directory
+              run: pwd
+
+            - name: Prints directory contents
+              run: ls -a
