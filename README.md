@@ -10,11 +10,23 @@ Dotafts is a web platform for content about content.
 
 ## Table of Contents
 
-- [Background](#background)
-- [Install](#install)
-- [Usage](#usage)
-- [API](#api)
-- [Contributing](#contributing)
+- [DOTAFTS](#dotafts)
+  - [Activity](#activity)
+  - [Table of Contents](#table-of-contents)
+  - [Background](#background)
+  - [Tech](#tech)
+    - [A Standard Static Web Server Model](#a-standard-static-web-server-model)
+    - [Server](#server)
+    - [Client](#client)
+    - [Database](#database)
+  - [Install](#install)
+    - [Installation (Web)](#installation-web)
+    - [Installation (Server)](#installation-server)
+  - [Local Development](#local-development)
+  - [Deployment](#deployment)
+  - [Icons](#icons)
+  - [More optional sections](#more-optional-sections)
+  - [Contributing](#contributing)
 
 ## Background
 
@@ -24,7 +36,19 @@ Dotafts is a web platform for content about content. It serves as a publication 
 
 ### A Standard Static Web Server Model
 
-This project doesn't reinvent the wheel. It subscribes to a common server-client model of infrastructure. 
+This project doesn't reinvent the wheel. It subscribes to a common server-client model of infrastructure. We have a client application, the source code for which can be found under `./www`. We also have a traditional tcp https server, the source code for which can be found under `./src`.
+
+### Server
+
+We use Rust with Actix Web for our server. We use sqlx as our database exchange library. We use actix_files for our static web hosting.
+
+### Client
+
+We use React 18.2 and React DOM 18.2 for the client. We generate static html during the build/release process and hydrate the markup on the client. We use the ReactDOM/server api for static site generation. We don't use next.js or remix. When possible, we rely on native html and css functionality over any js counterpart.
+
+### Database
+
+We use postgres.
 
 ## Install
 
@@ -49,13 +73,18 @@ $ cargo build
 
 Which should update your crate index with all the dependencies this project uses. This should speed up your first `cargo run` command.
 
-### Any optional sections
+## Local Development
 
-## Usage
+```bash
+# First time
+chmod +x ./bin/dev
 
-### Any optional sections
+./bin/dev
+```
 
-## API
+## Deployment
+
+We use github actions and shuttle.rs for continuous deployment and hosting.
 
 ## Icons
 
