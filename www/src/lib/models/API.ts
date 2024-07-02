@@ -53,6 +53,12 @@ class APIClient {
         headers.set('Accept-Encoding', 'gzip, br');
         return headers;
       };
+      case 'POST events': {
+        headers.set('Content-Type', 'application/json');
+        headers.set('Accept', 'application/json');
+        headers.set('Accept-Encoding', 'gzip, br');
+        return headers;
+      }
       default: {
         return headers;
       }

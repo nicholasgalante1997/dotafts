@@ -1,0 +1,41 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n        INSERT INTO events (event_type, event_data)\n        VALUES ($1, $2)\n        RETURNING *\n        ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "event_id",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 1,
+        "name": "event_type",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 2,
+        "name": "event_data",
+        "type_info": "Jsonb"
+      },
+      {
+        "ordinal": 3,
+        "name": "event_timestamp",
+        "type_info": "Timestamp"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Varchar",
+        "Jsonb"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      true
+    ]
+  },
+  "hash": "43505e097814014d6a524b08f121c24f16134d90adeea76e66eefe64d9d11a11"
+}

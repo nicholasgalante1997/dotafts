@@ -558,8 +558,10 @@ checksum = "a21f936df1771bf62b77f047b726c4625ff2e8aa607c01ec06e5a05bd8463401"
 dependencies = [
  "android-tzdata",
  "iana-time-zone",
+ "js-sys",
  "num-traits",
  "serde",
+ "wasm-bindgen",
  "windows-targets 0.52.5",
 ]
 
@@ -836,6 +838,7 @@ version = "0.1.0"
 dependencies = [
  "actix-files",
  "actix-web",
+ "chrono",
  "dotenv",
  "env_logger",
  "futures-util",
@@ -2634,6 +2637,7 @@ dependencies = [
  "smallvec",
  "sqlformat",
  "thiserror",
+ "time",
  "tokio",
  "tokio-stream",
  "tracing",
@@ -2718,6 +2722,7 @@ dependencies = [
  "sqlx-core",
  "stringprep",
  "thiserror",
+ "time",
  "tracing",
  "whoami",
 ]
@@ -2756,6 +2761,7 @@ dependencies = [
  "sqlx-core",
  "stringprep",
  "thiserror",
+ "time",
  "tracing",
  "whoami",
 ]
@@ -2778,6 +2784,7 @@ dependencies = [
  "percent-encoding",
  "serde",
  "sqlx-core",
+ "time",
  "tracing",
  "url",
  "urlencoding",

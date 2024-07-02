@@ -7,6 +7,7 @@ use sqlx::PgPool;
 
 mod config;
 mod database;
+mod models;
 mod routes;
 mod services;
 

@@ -26,4 +26,12 @@ pub fn configure_api_service(cfg: &mut web::ServiceConfig) {
         .route(web::patch().to(HttpResponse::MethodNotAllowed))
         .route(web::delete().to(HttpResponse::MethodNotAllowed)),
     );
+    cfg.service(
+        web::resource("/events/write")
+        .route(web::post().to(AppRoutes::post_event))
+        .route(web::get().to(HttpResponse::MethodNotAllowed))
+        .route(web::put().to(HttpResponse::MethodNotAllowed))
+        .route(web::patch().to(HttpResponse::MethodNotAllowed))
+        .route(web::delete().to(HttpResponse::MethodNotAllowed)),
+    );
 }
