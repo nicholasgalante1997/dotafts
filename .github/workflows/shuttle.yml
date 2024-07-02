@@ -9,8 +9,9 @@ on:
     workflow_dispatch:
 
 jobs:
-    start:
+    shuttle-deploy:
         runs-on: ubuntu-22.04
+        environment: Production
         steps:
             - name: Start release process
               run: echo "Starting release process to shuttle.rs"
