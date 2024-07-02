@@ -1,0 +1,52 @@
+name: shuttle-gh-cd
+run-name: ${{ github.actor }} triggered shuttle deploy.
+
+on:
+    push:
+        branches:
+            - main
+            - feature/gh-actions
+    workflow_dispatch:
+
+jobs:
+    shuttle-deploy:
+        runs-on: ubuntu-22.04
+        environment: Production
+        steps:
+            - name: Start release process
+              run: echo "Starting release process to shuttle.rs"
+
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                # Version Spec of the version to use in SemVer notation.
+                # It also emits such aliases as lts, latest, nightly and canary builds
+                # Examples: 12.x, 10.15.1, >=10.15.0, lts/Hydrogen, 16-nightly, latest, node
+                node-version: '22.x'
+
+            - uses: pnpm/action-setup@v4
+              with:
+                version: 9
+
+            - run: node -v
+            - run: pnpm -v
+
+            - name: Install Web Dependencies
+              run: pnpm install --frozen-lockfile
+              working-directory: ./www
+
+            - name: Build Web Assets
+              run: pnpm build
+              working-directory: ./www
+
+            - name: Clean Web Dependencies
+              run: rm -rf node_modules
+              working-directory: ./www
+
+            - uses: shuttle-hq/deploy-action@main
+              with:
+                deploy-key: ${{ secrets.SHUTTLE_API_KEY }}
+            
+            - name: Release Complete
+              run: echo "Release Complete"
