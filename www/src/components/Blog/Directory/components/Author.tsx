@@ -1,16 +1,12 @@
 import React from 'react';
 import { AuthorLike } from '@/types/Author';
 
-function Author(props: { author: AuthorLike }) {
-  if (typeof props.author === 'string') {
-    return <span className="author-string">by {props.author}</span>;
+function Author(props: { data: AuthorLike }) {
+  if (typeof props.data === 'string') {
+    return <span>{props.data}</span>;
   }
-  return (
-    <span className="author-object">
-      <span className="author-pfp" />
-      {props.author.name} {props.author.email ? `<${props.author.email}>` : ''}
-    </span>
-  );
+
+  return <span>{props.data.name}</span>;
 }
 
 export default React.memo(Author);

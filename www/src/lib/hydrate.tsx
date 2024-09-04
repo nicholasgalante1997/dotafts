@@ -1,6 +1,7 @@
 import React from 'react';
 import { hydrateRoot } from 'react-dom/client';
 import getClientSideProps from './props';
+import couWorker from './worker';
 
 function hydrate<P = {}>(Component: React.ComponentType<P>, hasProps = false) {
   let props = {} as P;
@@ -12,11 +13,10 @@ function hydrate<P = {}>(Component: React.ComponentType<P>, hasProps = false) {
   hydrateRoot(document, <Component {...(props as P & React.JSX.IntrinsicAttributes)} />, {
     identifierPrefix: '@dotafts',
     onRecoverableError(error, errorInfo) {
-      console.warn(`
-            !~ A hydration error occurred.
-              error: ${JSON.stringify(error, null, 2)}
-              errorInfo: ${JSON.stringify(errorInfo, null, 2)}
-          `);
+      const errorWorker = couWorker('Error');
+      if (errorWorker) {
+        errorWorker.postMessage({ error, errorInfo });
+      }
     }
   });
 }

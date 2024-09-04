@@ -204,12 +204,7 @@ button.splash-cta {
   fill: white;
   font-weight: 700;
 
-  background: linear-gradient(
-    to right,
-    var(--azure) 50%,
-    var(--blue-violet) 50%,
-    var(--blue-violet) 100%
-  );
+  background: linear-gradient(to right, var(--blue-violet) 50%, #5f5ff6 50%, #5f5ff6 100%);
 
   background-size: 200% 100%;
   transition: background-position 300ms ease-in;
