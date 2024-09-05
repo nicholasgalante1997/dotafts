@@ -1,1 +1,1 @@
-assets = ["www/public/*"]
+assets = ["public/*"]

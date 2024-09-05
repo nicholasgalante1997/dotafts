@@ -29,29 +29,20 @@ async fn main(
             web::scope("/api")
                 .wrap(Logger::default())
                 .wrap(middleware::DefaultHeaders::new().add(("X-Dotafts-Server-API-Version", "0.1")))
+                .wrap(middleware::DefaultHeaders::new().add(("X-Dotafts-Markdown-Version", "0.1")))
                 .wrap(middleware::Compress::default())
                 .configure(|scoped_cfg| 
                     AppServices::service_configurations::api::configure_api_service(scoped_cfg)
                 )
         );
         cfg.service(
-            web::scope("/markdown")
-                .wrap(Logger::default())
-                .wrap(middleware::DefaultHeaders::new().add(("X-Dotafts-Server-API-Version", "0.1")))
-                .wrap(middleware::DefaultHeaders::new().add(("X-Dotafts-Markdown-Version", "0.1")))
-                .wrap(middleware::Compress::default()) 
-                .configure(|scoped_cfg|
-                    AppServices::service_configurations::markdown::configure_static_markdown_service(scoped_cfg)
-                )
-        );
-        cfg.service(
             web::scope("")
                 .wrap(Logger::default())
                 .wrap(middleware::DefaultHeaders::new().add(("X-Dotafts-Server-API-Version", "0.1")))
-                .wrap(middleware::DefaultHeaders::new().add(("Cache-Control", "max-age=3600, public")))
-                .wrap(middleware::Compress::default()) 
-                .configure(|web_scoped_cfg| 
-                    AppServices::service_configurations::web::configure_web_service(web_scoped_cfg)
+                .wrap(middleware::DefaultHeaders::new().add(("X-Dotafts-Markdown-Version", "0.1")))
+                .wrap(middleware::Compress::default())
+                .configure(|scoped_cfg| 
+                    AppServices::service_configurations::file::configure_static_file_service(scoped_cfg)
                 )
         );
     }; 

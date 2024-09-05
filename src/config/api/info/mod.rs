@@ -43,10 +43,3 @@ impl Responder for ServiceInfo {
             .body(body)
     }
 }
-
-// SECTION
-// see documentation:
-// - https://actix.rs/docs/handlers
-// - https://docs.rs/crate/serde_json/latest
-// - https://crates.io/crates/serde
-// !SECTION
