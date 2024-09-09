@@ -1,9 +1,10 @@
-use actix_web::{body::BoxBody, http::header::ContentType, HttpRequest, HttpResponse, Responder};
+use actix_web::{body::BoxBody, HttpRequest, HttpResponse, Responder};
 use dotenv::dotenv;
 use serde::Deserialize;
 use serde::Serialize;
-use serde_json;
 use std::env;
+
+use crate::traits::res::convert_to_json_body;
 
 #[derive(Clone, Serialize, Deserialize)]
 pub struct ServiceInfo {
@@ -35,11 +36,6 @@ impl Responder for ServiceInfo {
     type Body = BoxBody;
 
     fn respond_to(self, _req: &HttpRequest) -> HttpResponse<Self::Body> {
-        let body = serde_json::to_string(&self).unwrap();
-
-        // Create response and set content type
-        HttpResponse::Ok()
-            .content_type(ContentType::json())
-            .body(body)
+        convert_to_json_body(&self)
     }
 }
