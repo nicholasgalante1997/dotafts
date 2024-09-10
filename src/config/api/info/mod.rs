@@ -4,7 +4,7 @@ use serde::Deserialize;
 use serde::Serialize;
 use std::env;
 
-use crate::traits::res::convert_to_json_body;
+use crate::util::res::convert_to_json_body;
 
 #[derive(Clone, Serialize, Deserialize)]
 pub struct ServiceInfo {

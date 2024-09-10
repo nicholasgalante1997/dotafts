@@ -10,7 +10,7 @@ mod database;
 mod models;
 mod routes;
 mod services;
-mod traits;
+mod util;
 
 use routes as AppRoutes;
 use services as AppServices;

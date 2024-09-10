@@ -45,7 +45,7 @@ pub fn handle_dir_ent_is_dir(
         if path.is_file() {
             handle_dir_ent_is_file(path, files);
         } else if path.is_dir() {
-            handle_dir_ent_is_dir(path, files);
+            let _ = handle_dir_ent_is_dir(path, files);
         }
     }
 
